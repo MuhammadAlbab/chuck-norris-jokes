@@ -1,6 +1,5 @@
 import { JokesProvider } from "./context";
 import Router from "./router";
-import "./styles/main.scss";
 
 function App() {
   return (

@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
+import "./styles/main.scss";
 import Loading from "./components/Loading";
 import reportWebVitals from "./reportWebVitals";
 
