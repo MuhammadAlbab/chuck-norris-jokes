@@ -1,8 +1,13 @@
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Button from "../components/PrimaryBtn";
 
 const BottomSearchBar = ({ categories }) => {
+  const history = useHistory();
+  const [textInput, setTextInput] = useState("");
+
   return (
     <div className="bottom-search-bar">
       <Autocomplete
@@ -11,6 +16,7 @@ const BottomSearchBar = ({ categories }) => {
         options={categories}
         autoHighlight
         getOptionLabel={(option) => option}
+        onChange={(e) => setTextInput(e.target.innerHTML)}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -19,7 +25,16 @@ const BottomSearchBar = ({ categories }) => {
           />
         )}
       />
-      <Button text={"Search!"} clickHandler={() => alert("Search Home")} />
+      <Button
+        text={"Search!"}
+        clickHandler={() =>
+          history.push({
+            pathname: "/category",
+            search: `?query=${textInput}`,
+            state: { word: textInput },
+          })
+        }
+      />
     </div>
   );
 };

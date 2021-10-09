@@ -27,7 +27,7 @@ const Search = (props) => {
         <div className="search-result-info">Search text: {word}</div>
         {loading ? (
           <div className="jokes-teks">Loading. . .</div>
-        ) : value.length == 0 ? (
+        ) : value.length === 0 ? (
           <div className="jokes-teks">Sorry!, can't find any result</div>
         ) : value.length > 5 ? (
           value.slice(0, 5).map((e) => {

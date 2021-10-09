@@ -1,7 +1,42 @@
-const Category = () => {
+import { useEffect, useState } from "react";
+import { getByCategories } from "../api";
+import { useJokes } from "../context";
+import ChuckNorris from "../assets/chuck-norris 1.svg";
+
+const Category = (props) => {
+  const { value, setValue } = useJokes();
+  const [loading, setLoading] = useState(false);
+  const { word } = props.location.state;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      let response = await getByCategories(word);
+      setValue([response.data]);
+      setLoading(false);
+    };
+    fetchData();
+  }, [word, setValue]);
+
   return (
     <div className="pages category-page">
-      <div>category</div>
+      <div className="content-wrapper">
+        <div>
+          <img src={ChuckNorris} alt="ChuckNorris" />
+        </div>
+        <div className="search-result-info">Category: {word}</div>
+        {loading ? (
+          <div className="jokes-teks">Loading. . .</div>
+        ) : (
+          value.map((e) => {
+            return (
+              <div className="jokes-teks" key={e.id}>
+                "{e.value}"
+              </div>
+            );
+          })
+        )}
+      </div>
     </div>
   );
 };
