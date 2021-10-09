@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Rye&display=swap");
+
+.header {
+  position: relative;
+  height: 62px;
+  width: 375px;
+  background-color: #fffbeb;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .header-arrow {
+    left: 1.4rem;
+    position: absolute;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .header-content {
+    color: #b45309;
+    font-family: "Rye", cursive;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+  }
+}

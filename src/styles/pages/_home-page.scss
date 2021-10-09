@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600;1,700&display=swap");
+
+.home-page {
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+
+    .jokes-teks {
+      margin: 1rem 0 0 0;
+      font-weight: 600;
+      text-align: center;
+      font-style: italic;
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .btn-another-wrapper {
+      margin: 1rem 0 0 0;
+    }
+  }
+
+  .bottom-search-wrapper {
+    width: 343px;
+    position: absolute;
+    bottom: 0;
+  }
+}
