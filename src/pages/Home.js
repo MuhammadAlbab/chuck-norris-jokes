@@ -43,7 +43,7 @@ const Home = () => {
           value.map((e) => {
             return (
               <div className="jokes-teks" key={e.id}>
-                {e.value}
+                "{e.value}"
               </div>
             );
           })

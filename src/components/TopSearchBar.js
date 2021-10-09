@@ -16,7 +16,16 @@ const TopSearchBar = () => {
         size="small"
         onChange={(e) => setTextInput(e.target.value)}
       />
-      <Button text={"Search!"} clickHandler={() => history.push("/search")} />
+      <Button
+        text={"Search!"}
+        clickHandler={() =>
+          history.push({
+            pathname: "/search",
+            search: `?query=${textInput}`,
+            state: { word: textInput },
+          })
+        }
+      />
     </div>
   );
 };
