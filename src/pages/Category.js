@@ -9,10 +9,13 @@ const Category = (props) => {
   const { word } = props.location.state;
 
   useEffect(() => {
+    setValue([]);
     const fetchData = async () => {
       setLoading(true);
       let response = await getByCategories(word);
-      setValue([response.data]);
+      if (response !== undefined) {
+        setValue([response.data]);
+      }
       setLoading(false);
     };
     fetchData();
@@ -27,6 +30,8 @@ const Category = (props) => {
         <div className="search-result-info">Category: {word}</div>
         {loading ? (
           <div className="jokes-teks">Loading. . .</div>
+        ) : value.length === 0 ? (
+          <div className="jokes-teks">Sorry!, can't find any result</div>
         ) : (
           value.map((e) => {
             return (

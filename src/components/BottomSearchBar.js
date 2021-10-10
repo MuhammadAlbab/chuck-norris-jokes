@@ -9,6 +9,30 @@ const BottomSearchBar = ({ categories }) => {
   const history = useHistory();
   const [textInput, setTextInput] = useState("");
 
+  const handleBot = () => {
+    textInput === ""
+      ? alert("Category can't be empty!")
+      : history.push({
+          pathname: "/category",
+          search: `?query=${textInput}`,
+          state: { word: textInput },
+        });
+  };
+
+  const handleKey = (e) => {
+    setTextInput(e.target.value);
+    if (e.key === "Enter") {
+      textInput === ""
+        ? alert("Category can't be empty!")
+        : history.push({
+            pathname: "/category",
+            search: `?query=${textInput}`,
+            state: { word: textInput },
+          });
+    }
+    return;
+  };
+
   return (
     <div className="bottom-search-bar">
       <Autocomplete
@@ -16,8 +40,8 @@ const BottomSearchBar = ({ categories }) => {
         sx={{ width: 223 }}
         options={categories}
         autoHighlight
-        getOptionLabel={(option) => option}
         onChange={(e) => setTextInput(e.target.innerHTML)}
+        getOptionLabel={(option) => option}
         PaperComponent={({ children }) => (
           <Paper
             style={{
@@ -36,19 +60,11 @@ const BottomSearchBar = ({ categories }) => {
             {...params}
             label="Search jokes by category"
             size="small"
+            onKeyUp={(e) => handleKey(e)}
           />
         )}
       />
-      <Button
-        text={"Search!"}
-        clickHandler={() =>
-          history.push({
-            pathname: "/category",
-            search: `?query=${textInput}`,
-            state: { word: textInput },
-          })
-        }
-      />
+      <Button text={"Search!"} clickHandler={handleBot} />
     </div>
   );
 };

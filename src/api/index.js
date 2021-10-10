@@ -31,7 +31,7 @@ export const getByText = async (param) => {
 
 export const getByCategories = async (param) => {
   try {
-    let response = axios.get(`${BASE_URL}/random?category=${param}`);
+    let response = await axios.get(`${BASE_URL}/random?category=${param}`);
     return response;
   } catch (error) {
     console.log(error);
